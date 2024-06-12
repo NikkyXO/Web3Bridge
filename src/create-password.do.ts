@@ -17,7 +17,6 @@ export class GeneratePasswordDto {
   @Max(128)
   @Type(() => Number)
   @ApiProperty()
-  @Optional()
   length: number;
 
   @IsBoolean()
