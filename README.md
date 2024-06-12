@@ -40,8 +40,8 @@ $ View apis on swagger documentation at http://localhost:3008/api
 
 ### Generate Password
  - URL: /password/generate
- - Method: GET
- - Query Parameters:
+ - Method: POST
+ - Body Payload:
  - length (number, required): Length of the password (min: 4, max: 128).
 useUpperCase (boolean, optional): Include uppercase letters (default: false).
  - useNumbers (boolean, optional): Include numbers (default: false).
