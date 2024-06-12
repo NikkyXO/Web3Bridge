@@ -1,4 +1,4 @@
-import { Body, Controller, Get } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { GeneratePasswordDto } from './create-password.do';
 
@@ -6,8 +6,10 @@ import { GeneratePasswordDto } from './create-password.do';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('generate')
-  generatePassword(@Body() body: GeneratePasswordDto): string {
+  @Post('generate')
+  async generatePassword(
+    @Body() body: GeneratePasswordDto,
+  ): Promise<{ password: string }> {
     return await this.appService.generatePassword(body);
   }
 }

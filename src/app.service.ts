@@ -6,7 +6,7 @@ export class AppService {
   private readonly lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
   private readonly upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   private readonly numberChars = '0123456789';
-  private readonly specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+  private readonly specialChars = '!@#$%^&*()_+|;:,.?';
 
   async generatePassword(genPasswordData: GeneratePasswordDto) {
     let charSet = this.lowerCaseChars;
@@ -16,13 +16,14 @@ export class AppService {
 
     if (genPasswordData.useNumbers) charSet += this.numberChars;
     if (genPasswordData.useSpecialChars) charSet += this.specialChars;
+    if (genPasswordData.useUpperCase) charSet += this.upperCaseChars;
 
     let password = '';
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < genPasswordData.length; i++) {
       const randomIndex = Math.floor(Math.random() * charSet.length);
       password += charSet[randomIndex];
     }
 
-    return password;
+    return { password };
   }
 }

@@ -1,5 +1,3 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { PasswordService } from './password.service';
 import {
   IsBoolean,
   IsInt,
@@ -9,6 +7,8 @@ import {
   Min,
 } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
+import { Optional } from '@nestjs/common';
 
 export class GeneratePasswordDto {
   @IsInt()
@@ -16,20 +16,28 @@ export class GeneratePasswordDto {
   @Min(4)
   @Max(128)
   @Type(() => Number)
+  @ApiProperty()
+  @Optional()
   length: number;
 
   @IsBoolean()
   @IsOptional()
   @Type(() => Boolean)
+  @ApiProperty()
+  @Optional()
   useUpperCase: boolean = false;
 
   @IsBoolean()
   @IsOptional()
   @Type(() => Boolean)
+  @ApiProperty()
+  @Optional()
   useNumbers: boolean = false;
 
   @IsBoolean()
   @IsOptional()
   @Type(() => Boolean)
+  @ApiProperty()
+  @Optional()
   useSpecialChars: boolean = false;
 }
