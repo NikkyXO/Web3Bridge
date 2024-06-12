@@ -24,19 +24,41 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a Random Password Generator script built with NestJS and TypeScript. 
+It generates random passwords of specified length and strength, containing a mix of uppercase letters, 
+lowercase letters, numbers, and special characters. 
+The project also includes test cases to ensure the functionality of the password generator.
 
 ## Installation
 
 ```bash
+$ git clone https://github.com/NikkyXO/random-password-generator.git
+$ cd Web3Bridge
 $ npm install
+$ npm run start:dev
+
 ```
+
+## Usage
+
+The Random Password Generator can be accessed via a simple HTTP POST request. You can specify the length of the password and the inclusion of uppercase letters, numbers, and special characters through query parameters
+
+## API Endpoints
+
+### Generate Password
+ - URL: /password/generate
+ - Method: GET
+ - Query Parameters:
+ - length (number, required): Length of the password (min: 4, max: 128).
+useUpperCase (boolean, optional): Include uppercase letters (default: false).
+ - useNumbers (boolean, optional): Include numbers (default: false).
+useSpecialChars (boolean, optional): Include special characters (default: false).
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ npm run test
 
 # watch mode
 $ npm run start:dev
@@ -51,11 +73,6 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
