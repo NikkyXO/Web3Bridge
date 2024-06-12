@@ -33,7 +33,7 @@ The project also includes test cases to ensure the functionality of the password
 
 ```bash
 $ git clone https://github.com/NikkyXO/random-password-generator.git
-$ cd password-generator
+$ cd Web3Bridge
 $ npm install
 $ npm run start:dev
 
