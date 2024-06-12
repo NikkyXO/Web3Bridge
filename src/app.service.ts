@@ -10,13 +10,15 @@ export class AppService {
 
   async generatePassword(genPasswordData: GeneratePasswordDto) {
     let charSet = this.lowerCaseChars;
-    if (genPasswordData.useUpperCase) {
-      charSet += this.specialChars;
-    }
 
-    if (genPasswordData.useNumbers) charSet += this.numberChars;
-    if (genPasswordData.useSpecialChars) charSet += this.specialChars;
-    if (genPasswordData.useUpperCase) charSet += this.upperCaseChars;
+    switch (true) {
+      case genPasswordData.useUpperCase:
+        charSet += this.upperCaseChars;
+      case genPasswordData.useNumbers:
+        charSet += this.numberChars;
+      case genPasswordData.useSpecialChars:
+        charSet += this.specialChars;
+    }
 
     let password = '';
     for (let i = 0; i < genPasswordData.length; i++) {

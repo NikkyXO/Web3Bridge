@@ -38,4 +38,27 @@ describe('AppController', () => {
     });
     expect(/[A-Z]/.test(password)).toBeTruthy();
   });
+
+  it('should include special characters when useSpecialChars is true', async () => {
+    const { password } = await appController.generatePassword({
+      length: 10,
+      useUpperCase: false,
+      useNumbers: false,
+      useSpecialChars: true,
+    });
+    expect(/[!@#$%^&*()_+|;:,.?]/.test(password)).toBeTruthy();
+  });
+
+  it('should generate a complex password with all character sets', async () => {
+    const { password } = await appController.generatePassword({
+      length: 20,
+      useUpperCase: true,
+      useNumbers: true,
+      useSpecialChars: true,
+    });
+    expect(/[a-z]/.test(password)).toBeTruthy();
+    expect(/[A-Z]/.test(password)).toBeTruthy();
+    expect(/[0-9]/.test(password)).toBeTruthy();
+    expect(/[!@#$%^&*()_+|;:,.?]/.test(password)).toBeTruthy();
+  });
 });
