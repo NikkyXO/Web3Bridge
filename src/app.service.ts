@@ -18,6 +18,7 @@ export class AppService {
         charSet += this.numberChars;
       case genPasswordData.useSpecialChars:
         charSet += this.specialChars;
+        break;
     }
 
     let password = '';
