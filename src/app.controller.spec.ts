@@ -14,9 +14,28 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  it('should be defined', () => {
+    expect(appController).toBeDefined();
+  });
+
+  it('should generate a password of specified length', async () => {
+    const length = 10;
+    const { password } = await appController.generatePassword({
+      length,
+      useUpperCase: false,
+      useNumbers: false,
+      useSpecialChars: false,
     });
+    expect(password).toHaveLength(length);
+  });
+
+  it('should include uppercase letters when useUpperCase is true', async () => {
+    const { password } = await appController.generatePassword({
+      length: 10,
+      useUpperCase: true,
+      useNumbers: false,
+      useSpecialChars: false,
+    });
+    expect(/[A-Z]/.test(password)).toBeTruthy();
   });
 });
